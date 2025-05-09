@@ -11,7 +11,7 @@ const port = 3000;
 
         await mongoose.connect('mongodb://localhost:27017/smart-univercity');
     } catch (error) {
-        
+        console.log(error, "server related problem");
     }
     
 })();
