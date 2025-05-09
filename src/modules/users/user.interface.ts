@@ -1,4 +1,4 @@
-type TUser ={
+export type TUser ={
     id:string,
     password:string,
     role: 'admin'| 'teacher' | 'student',
