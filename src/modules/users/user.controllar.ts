@@ -1,11 +1,18 @@
 import { Request, Response } from "express";
 import { UserServices } from "./user.services";
+import { userValidationSchema } from "./user.validation.schema";
 
 const createUser =async(req:Request,res:Response)=>{
     try {
         const userData =req.body
-const result = await UserServices.createUserIntoDB(userData)
-res.status(200).json(
+        const validation =  userValidationSchema.parse(userData)
+
+        if(!validation){
+            throw new Error("user information not valid")
+        }
+        console.log(validation,"validation is console");
+        const result = await UserServices.createUserIntoDB(validation)
+        res.status(200).json(
     {
         status:true,
         message:"User create Successfull",
