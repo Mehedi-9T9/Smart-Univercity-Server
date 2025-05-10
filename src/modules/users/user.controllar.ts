@@ -4,14 +4,16 @@ import { userValidationSchema } from "./user.validation.schema";
 
 const createUser =async(req:Request,res:Response)=>{
     try {
-        const userData =req.body
-        const validation =  userValidationSchema.parse(userData)
+        const studentData =req.body
 
-        if(!validation){
-            throw new Error("user information not valid")
-        }
-        console.log(validation,"validation is console");
-        const result = await UserServices.createUserIntoDB(validation)
+
+        //Pore ai kaj korbo 
+        // const validation =  userValidationSchema.parse(userData)
+        // if(!validation){
+        //     throw new Error("user information not valid")
+        // }
+       
+        const result = await UserServices.createUserIntoDB(studentData)
         res.status(200).json(
     {
         status:true,

@@ -1,15 +1,18 @@
+
 import app from "./app";
 import mongoose from "mongoose";
+import config from "../src/config";
 
-const port = 3000;
+// const port = 3000;
 
 (async()=> {
     try {
-        app.listen(port, () => {
-            console.log(`Example app listening on port ${port}`);
+        app.listen(config.PORT, () => {
+            console.log(config.PORT);
+            console.log(`Example app listening on port ${config.PORT}`);
         });
 
-        await mongoose.connect('mongodb://localhost:27017/smart-univercity');
+        await mongoose.connect(`${config.DATABASE_URI}`);
     } catch (error) {
         console.log(error, "server related problem");
     }
