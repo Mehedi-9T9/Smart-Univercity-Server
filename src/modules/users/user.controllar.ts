@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { UserServices } from "./user.services";
 import { userValidationSchema } from "./user.validation.schema";
 
-const createUser =async(req:Request,res:Response)=>{
+const createUser =async(req:Request,res:Response,next:NextFunction)=>{
     try {
         const studentData =req.body
 
@@ -22,7 +22,7 @@ const createUser =async(req:Request,res:Response)=>{
     }
 )
     } catch (error) {
-        console.log(error);
+       next(error)
         
     }
     

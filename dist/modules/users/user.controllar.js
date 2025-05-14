@@ -11,16 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userControllar = void 0;
 const user_services_1 = require("./user.services");
-const user_validation_schema_1 = require("./user.validation.schema");
-const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userData = req.body;
-        const validation = user_validation_schema_1.userValidationSchema.parse(userData);
-        if (!validation) {
-            throw new Error("user information not valid");
-        }
-        console.log(validation, "validation is console");
-        const result = yield user_services_1.UserServices.createUserIntoDB(validation);
+        const studentData = req.body;
+        //Pore ai kaj korbo 
+        // const validation =  userValidationSchema.parse(userData)
+        // if(!validation){
+        //     throw new Error("user information not valid")
+        // }
+        const result = yield user_services_1.UserServices.createUserIntoDB(studentData);
         res.status(200).json({
             status: true,
             message: "User create Successfull",
@@ -28,7 +27,7 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         });
     }
     catch (error) {
-        console.log(error);
+        next(error);
     }
 });
 exports.userControllar = {

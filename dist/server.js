@@ -14,13 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const port = 3000;
+const config_1 = __importDefault(require("../src/config"));
+// const port = 3000;
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        app_1.default.listen(port, () => {
-            console.log(`Example app listening on port ${port}`);
+        app_1.default.listen(config_1.default.PORT, () => {
+            console.log(config_1.default.PORT);
+            console.log(`Example app listening on port ${config_1.default.PORT}`);
         });
-        yield mongoose_1.default.connect('mongodb://localhost:27017/smart-univercity');
+        yield mongoose_1.default.connect(`${config_1.default.DATABASE_URI}`);
     }
     catch (error) {
         console.log(error, "server related problem");

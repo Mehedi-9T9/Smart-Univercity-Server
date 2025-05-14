@@ -17,5 +17,7 @@ const studentSchema = new Schema<TStudent>({
   relision:{type:String,required:true},
   
 });
+
+//passwork niye kaj korte hobe
 const StudentModel = model<TStudent>('Student', studentSchema);
 export default StudentModel;
