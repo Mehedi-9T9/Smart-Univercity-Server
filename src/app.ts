@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import { userRouter } from "./modules/users/user.router"
 import notFound from "./middleware/notFound"
+import router from "./app/routes"
 
 const express = require('express')
 const app = express()
@@ -8,7 +9,7 @@ const app = express()
 
 // user Apis
 app.use(express.json())
-app.use("/api/v1/user",userRouter)
+app.use("/api/v1",router)
 
 //notFound works
 app.use(notFound)

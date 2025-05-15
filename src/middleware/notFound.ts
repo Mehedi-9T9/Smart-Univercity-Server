@@ -1,13 +1,13 @@
 import e, { NextFunction, Request, Response } from "express"
+import sendResponse from "../utils/sendResponse"
 
 const notFound=((req:Request,res:Response,next:NextFunction)=>{
-  const messageStatus =500
-  const errroMessage = "Api Not Found" 
-  res.status(messageStatus).json({
-    success:false,
-    message:errroMessage,
-    error:""
-  })                                                                                                                                                                                                                                                                       
+  sendResponse(res,{
+    statusCode:404,
+    success:true,
+    message:"Api Not Found",
+    data:''
+  })                                                                                                                                                                                                                                                                      
 
 })
 export default notFound
