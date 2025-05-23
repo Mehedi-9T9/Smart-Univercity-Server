@@ -4,6 +4,7 @@ import { Types } from "mongoose";
 export type TStudent ={
     userId:string,
     user:Types.ObjectId,
+    academicSemister:Types.ObjectId,
     firstName:string,
     lastName:string,
     FatherName:string,

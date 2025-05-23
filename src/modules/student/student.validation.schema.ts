@@ -3,6 +3,7 @@ import { z } from 'zod';
 const studentValidationSchema = z.object({
   userId: z.string().optional(),
   user: z.string().optional(), // ObjectId as a string
+  academicSemister: z.string().optional(), // ObjectId as a string
   firstName: z.string(),
   lastName: z.string().nonempty({ message: "Last name is required" }),
   FatherName: z.string().nonempty({ message: "Father's name is required" }),

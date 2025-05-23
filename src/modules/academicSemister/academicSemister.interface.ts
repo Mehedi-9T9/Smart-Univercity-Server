@@ -11,3 +11,8 @@ export type TAcademicSemister ={
 
 
 }
+export type TSemisterInfo= {
+    Autom: string;
+    Summer: string;
+    Fall: string;
+}

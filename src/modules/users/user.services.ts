@@ -5,9 +5,13 @@ import UserModel from "./user.schema.model";
 
 const createUserIntoDB=async(student:TStudent)=>{
     //transition and rollback use korte hobe
+   
+    const count =await StudentModel.find().estimatedDocumentCount();
+   
+     const currentId ="2025"+"02"+((count === 0) ? 1 : count).toString().padStart(4,'0')
 
      const newUser:Partial<TUser> ={}
-     newUser.userId ="2025050001"
+     newUser.userId =currentId
      newUser.role ="student"
      newUser.status ="in-progress"
 
