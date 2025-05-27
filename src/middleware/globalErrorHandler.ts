@@ -2,19 +2,30 @@ import {Response, Request, NextFunction } from "express"
 import { ZodError } from "zod"
 import config from "../config"
 
+import simplifiedError from "../app/errors/zodErrorHandle"
+import validationError from "../app/errors/validationErrorHandle"
+
 const globalErrorHandler =(error:any,req:Request,res:Response,next:NextFunction)=>{
   let statusCode = error.statusCode || 500
   let errorMessage = error.message || "something went wrong" 
   let path:(string |number) =''
   let message =''
 
-
+ 
+//Zod Error Handle
 if(error instanceof ZodError){
-statusCode =400;
-errorMessage ='Zod Validation Error'
-path =error.issues[0].path.slice(-1)[0]
-message =error.issues[0].message
+  const simplified = simplifiedError(error)
+statusCode =simplified.statusCode;
+errorMessage =simplified.errorMessage;
+path =simplified.path;
+message =simplified.message
 
+}else if(error.name ==="ValidationError"){
+  const simplified =validationError(error)
+  statusCode =simplified.statusCode;
+errorMessage =simplified.errorMessage;
+path =simplified.path;
+message =simplified.message
 }
 
 //Error Pattern
@@ -30,6 +41,7 @@ message =error.issues[0].message
         path,
         message
     },
+    error,
     stack: config.NODE_ENV === "development"? error?.stack : null,
     
   })                                                                                                                                                                                                                                                                       
