@@ -4,6 +4,8 @@ import notFound from "./middleware/notFound"
 import router from "./app/routes"
 
 import express from 'express'
+import globalErrorHandler from "./middleware/globalErrorHandler"
+
 const app = express()
 
 
@@ -17,15 +19,8 @@ app.get('/', (req:Request, res:Response) => {
   res.send('Hello World! hahaha')
 })
 
-app.use((err:any,req:Request,res:Response,next:NextFunction)=>{
-  const messageStatus = err.statusCode || 500
-  const errroMessage = err.message || "something went wrong" 
-  res.status(messageStatus).json({
-    success:false,
-    message:errroMessage,
-    error:err
-  })                                                                                                                                                                                                                                                                       
 
-})
+
+app.use(globalErrorHandler)
 
 export default app;

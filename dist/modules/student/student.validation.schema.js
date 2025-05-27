@@ -4,6 +4,8 @@ const zod_1 = require("zod");
 const studentValidationSchema = zod_1.z.object({
     userId: zod_1.z.string().optional(),
     user: zod_1.z.string().optional(), // ObjectId as a string
+    academicSemister: zod_1.z.string().nonempty({ message: "Semister name is required" }), // ObjectId as a string
+    academicDepartment: zod_1.z.string().nonempty({ message: "Department name is required" }), // ObjectId as a string
     firstName: zod_1.z.string(),
     lastName: zod_1.z.string().nonempty({ message: "Last name is required" }),
     FatherName: zod_1.z.string().nonempty({ message: "Father's name is required" }),

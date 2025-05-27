@@ -4,6 +4,8 @@ const mongoose_1 = require("mongoose");
 const studentSchema = new mongoose_1.Schema({
     userId: { type: String, },
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User' },
+    academicSemister: { type: mongoose_1.Schema.Types.ObjectId, ref: 'AcademicSemister' },
+    academicDepartment: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Department' },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     FatherName: { type: String, required: true },
