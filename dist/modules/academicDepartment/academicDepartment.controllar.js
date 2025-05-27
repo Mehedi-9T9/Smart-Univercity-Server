@@ -30,8 +30,14 @@ const updateAcademicDepartment = (0, catchAsync_1.default)((req, res) => __await
     const result = yield department_services_1.academicDepartmentServices.updateAcademicDepartmentIntoDB(info, id);
     (0, sendResponse_1.default)(res, { statusCode: 200, message: 'Update successfull', success: true, data: result });
 }));
+const getSingleDepartment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const data = yield department_services_1.academicDepartmentServices.getSingleDepartmentIntoDB(id);
+    (0, sendResponse_1.default)(res, { statusCode: 200, message: 'Update successfull', success: true, data });
+});
 exports.academicDepartmentControllar = {
     createAcademicDepartment,
     updateAcademicDepartment,
     getAcademicDepartment,
+    getSingleDepartment,
 };

@@ -6,8 +6,10 @@ import { academicDepartmentValidationSchema } from './academicDepartment.validat
 
 const router =express.Router()
 router.get('/',academicDepartmentControllar.getAcademicDepartment)
+
 //router.post('/create-academicDepartment',requestValidation(academicDepartmentValidationSchema),academicDepartmentControllar.createAcademicDepartment)
 router.post('/create-academicDepartment',academicDepartmentControllar.createAcademicDepartment)
 router.patch('/update-department/:id',academicDepartmentControllar.updateAcademicDepartment)
+router.get('/singleDepartment/:id',academicDepartmentControllar.getSingleDepartment)
 
 export const academicDepartmentRouter =router

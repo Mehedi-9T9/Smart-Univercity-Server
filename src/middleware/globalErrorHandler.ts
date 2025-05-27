@@ -4,6 +4,7 @@ import config from "../config"
 
 import simplifiedError from "../app/errors/zodErrorHandle"
 import validationError from "../app/errors/validationErrorHandle"
+import castErrorHandle from "../app/errors/castErrorHandle"
 
 const globalErrorHandler =(error:any,req:Request,res:Response,next:NextFunction)=>{
   let statusCode = error.statusCode || 500
@@ -22,6 +23,12 @@ message =simplified.message
 
 }else if(error.name ==="ValidationError"){
   const simplified =validationError(error)
+  statusCode =simplified.statusCode;
+errorMessage =simplified.errorMessage;
+path =simplified.path;
+message =simplified.message
+}else if(error.name ==="CastError"){
+   const simplified =castErrorHandle(error)
   statusCode =simplified.statusCode;
 errorMessage =simplified.errorMessage;
 path =simplified.path;

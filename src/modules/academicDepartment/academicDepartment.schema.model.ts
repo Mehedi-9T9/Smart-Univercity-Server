@@ -3,7 +3,7 @@ import AppError from "../../app/errors/appError";
 import { optional } from "zod";
 
 const  academicDepartmentSchema = new Schema({
-  name: { type: String, required: true, optional:true },
+  name: { type: String, required: true,unique:true, optional:true },
   academicFaculty: { type: Schema.Types.ObjectId, required: true, ref:'Faculty' ,optional:true},
  
 

@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import catchAsync from "../../utils/catchAsync";
 import { academicDepartmentServices } from "./department.services";
 import sendResponse from "../../utils/sendResponse";
+import { AcademicDepartmentModel } from "./academicDepartment.schema.model";
 
 const createAcademicDepartment:RequestHandler =catchAsync(async(req,res)=>{
 const result = await academicDepartmentServices.createAcademicDepartmentIntoDB(req.body)
@@ -18,8 +19,15 @@ const updateAcademicDepartment:RequestHandler =catchAsync(async(req,res)=>{
     const result =await academicDepartmentServices.updateAcademicDepartmentIntoDB(info,id)
     sendResponse(res,{statusCode:200,message:'Update successfull',success:true,data:result})
 })
+
+const getSingleDepartment:RequestHandler =async(req,res)=>{
+    const {id}=req.params
+    const data =await academicDepartmentServices.getSingleDepartmentIntoDB(id)
+    sendResponse(res,{statusCode:200,message:'Update successfull',success:true,data})
+}
 export const academicDepartmentControllar ={
     createAcademicDepartment,
     updateAcademicDepartment,
     getAcademicDepartment,
+    getSingleDepartment,
 }

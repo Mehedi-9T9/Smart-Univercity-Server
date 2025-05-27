@@ -32,8 +32,14 @@ const updateAcademicDepartmentIntoDB = (payload, id) => __awaiter(void 0, void 0
     const result = yield academicDepartment_schema_model_1.AcademicDepartmentModel.findOneAndUpdate({ _id: id }, updateDoc, { new: true });
     return result;
 });
+const getSingleDepartmentIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(id, "id is console");
+    const result = yield academicDepartment_schema_model_1.AcademicDepartmentModel.findOne({ _id: id });
+    return result;
+});
 exports.academicDepartmentServices = {
     createAcademicDepartmentIntoDB,
     updateAcademicDepartmentIntoDB,
     getAcademicDepartmentIntoDB,
+    getSingleDepartmentIntoDB,
 };

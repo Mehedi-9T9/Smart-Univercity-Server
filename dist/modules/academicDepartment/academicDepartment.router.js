@@ -11,4 +11,5 @@ router.get('/', academicDepartment_controllar_1.academicDepartmentControllar.get
 //router.post('/create-academicDepartment',requestValidation(academicDepartmentValidationSchema),academicDepartmentControllar.createAcademicDepartment)
 router.post('/create-academicDepartment', academicDepartment_controllar_1.academicDepartmentControllar.createAcademicDepartment);
 router.patch('/update-department/:id', academicDepartment_controllar_1.academicDepartmentControllar.updateAcademicDepartment);
+router.get('/singleDepartment/:id', academicDepartment_controllar_1.academicDepartmentControllar.getSingleDepartment);
 exports.academicDepartmentRouter = router;

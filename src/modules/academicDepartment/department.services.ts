@@ -23,8 +23,16 @@ const updateAcademicDepartmentIntoDB =async(payload:TAcedemicDepartment,id:strin
     const result = await AcademicDepartmentModel.findOneAndUpdate({_id:id},updateDoc,{new:true})
     return result
 }
+
+const getSingleDepartmentIntoDB =async(id:string)=>{
+    console.log(id, "id is console");
+    const result =await AcademicDepartmentModel.findOne({_id:id})
+    return result;
+}
 export const academicDepartmentServices ={
     createAcademicDepartmentIntoDB,
     updateAcademicDepartmentIntoDB,
     getAcademicDepartmentIntoDB,
+    getSingleDepartmentIntoDB,
+    
 }

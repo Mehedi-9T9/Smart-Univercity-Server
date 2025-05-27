@@ -7,6 +7,7 @@ const zod_1 = require("zod");
 const config_1 = __importDefault(require("../config"));
 const zodErrorHandle_1 = __importDefault(require("../app/errors/zodErrorHandle"));
 const validationErrorHandle_1 = __importDefault(require("../app/errors/validationErrorHandle"));
+const castErrorHandle_1 = __importDefault(require("../app/errors/castErrorHandle"));
 const globalErrorHandler = (error, req, res, next) => {
     let statusCode = error.statusCode || 500;
     let errorMessage = error.message || "something went wrong";
@@ -22,6 +23,13 @@ const globalErrorHandler = (error, req, res, next) => {
     }
     else if (error.name === "ValidationError") {
         const simplified = (0, validationErrorHandle_1.default)(error);
+        statusCode = simplified.statusCode;
+        errorMessage = simplified.errorMessage;
+        path = simplified.path;
+        message = simplified.message;
+    }
+    else if (error.name === "CastError") {
+        const simplified = (0, castErrorHandle_1.default)(error);
         statusCode = simplified.statusCode;
         errorMessage = simplified.errorMessage;
         path = simplified.path;

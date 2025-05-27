@@ -39,7 +39,7 @@ exports.AcademicDepartmentModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const appError_1 = __importDefault(require("../../app/errors/appError"));
 const academicDepartmentSchema = new mongoose_1.Schema({
-    name: { type: String, required: true, optional: true },
+    name: { type: String, required: true, unique: true, optional: true },
     academicFaculty: { type: mongoose_1.Schema.Types.ObjectId, required: true, ref: 'Faculty', optional: true },
 }, { timestamps: true });
 //Middleware
