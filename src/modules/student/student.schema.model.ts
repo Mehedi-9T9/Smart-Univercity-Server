@@ -5,6 +5,7 @@ const studentSchema = new Schema<TStudent>({
     userId:{type:String,},
     user:{type:Schema.Types.ObjectId,ref: 'User'},
     academicSemister:{type:Schema.Types.ObjectId, ref: 'AcademicSemister'},
+    academicDepartment:{type:Schema.Types.ObjectId, ref: 'Department'},
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   FatherName: { type: String, required: true },

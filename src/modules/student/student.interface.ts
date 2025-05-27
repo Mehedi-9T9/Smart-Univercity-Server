@@ -5,6 +5,7 @@ export type TStudent ={
     userId:string,
     user:Types.ObjectId,
     academicSemister:Types.ObjectId,
+    academicDepartment:Types.ObjectId,
     firstName:string,
     lastName:string,
     FatherName:string,

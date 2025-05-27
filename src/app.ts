@@ -3,7 +3,7 @@ import { userRouter } from "./modules/users/user.router"
 import notFound from "./middleware/notFound"
 import router from "./app/routes"
 
-const express = require('express')
+import express from 'express'
 const app = express()
 
 
@@ -18,7 +18,7 @@ app.get('/', (req:Request, res:Response) => {
 })
 
 app.use((err:any,req:Request,res:Response,next:NextFunction)=>{
-  const messageStatus =500
+  const messageStatus = err.statusCode || 500
   const errroMessage = err.message || "something went wrong" 
   res.status(messageStatus).json({
     success:false,
