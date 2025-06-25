@@ -10,7 +10,7 @@ const createFaculty: RequestHandler = catchAsync(async (req: Request, res: Respo
 
 
 const getAllFaculty: RequestHandler = catchAsync(async (req: Request, res: Response) => {
-    console.log(req.query, 'quary is console');
+    // console.log(req.query, 'quary is console');
     const result = await facultyServices.getAllFacultyIntoDB(req.query)
     sendResponse(res, { statusCode: 200, message: "Faculty Create Successfull", success: true, data: result })
 })
